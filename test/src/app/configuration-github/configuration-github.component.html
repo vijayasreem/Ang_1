@@ -1,0 +1,42 @@
+﻿<form [formGroup]="userStoryForm" (ngSubmit)="onSubmit()">
+    <div class="user-stories">
+        <h1>Configuration of Github</h1>
+        <p>As a user, I want to be able to view my fetched user stories from Jira and select the user stories so that I can access and review the details of the stories related to my project.</p>
+
+        <h2>Acceptance Criteria</h2>
+        <ul>
+            <li>User stories should be successfully fetched from Jira API</li>
+            <li>User stories should be displayed in a readable and organized manner in the front-end application.</li>
+            <li>User stories should be displayed in real-time without any delay or lag.</li>
+        </ul>
+
+        <h2>Acceptance Testing</h2>
+        <ul>
+            <li>Verify that user stories are successfully fetched from Jira API</li>
+            <li>Verify that the fetched user stories are displayed correctly in the front-end application with the necessary details such as the story title, description, and assigned team member.</li>
+            <li>Verify that the user stories are displayed in real-time without any delay or lag.</li>
+        </ul>
+
+        <h2>Definition of Done</h2>
+        <ul>
+            <li>The user stories have been successfully fetched from Jira API and displayed in the front-end application.</li>
+            <li>The user stories are displayed in a readable and organized manner with the necessary details.</li>
+            <li>The user stories are displayed in real-time without any delay or lag.</li>
+            <li>All acceptance criteria and acceptance testing have been successfully met and verified.</li>
+        </ul>
+
+        <h2>User Stories</h2>
+        <div *ngFor="let userStory of userStories" formGroupName="userStories">
+            <input type="checkbox" formControlName="selectedUserStories" [value]="userStory.id" />
+            <div class="user-story-details">
+                <span>Title: {{userStory.title}}</span>
+                <span>Description: {{userStory.description}}</span>
+                <span>Assigned Member: {{userStory.member}}</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" [disabled]="!userStoryForm.valid" />
+        </div>
+    </div>
+</form>
